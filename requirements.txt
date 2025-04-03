@@ -1,5 +1,7 @@
-flask
 transformers
 torch
+tensorflow
+sentencepiece
+flask
+flask-cors
 gunicorn
-
