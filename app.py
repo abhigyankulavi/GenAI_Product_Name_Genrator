@@ -1,12 +1,11 @@
 import gradio as gr
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 
-# Load the model and tokenizer
-model_path = "t5_product_name_generator"  # Ensure this folder is uploaded
+model_path = "t5_product_name_generator" 
 tokenizer = T5Tokenizer.from_pretrained(model_path)
 model = T5ForConditionalGeneration.from_pretrained(model_path)
 
-# Function to generate product names
+
 def generate_names(description, tone, num_names=1):
     if not description or not tone:
         return ["Error: Product description and tone are required!"]
@@ -25,7 +24,6 @@ def generate_names(description, tone, num_names=1):
 
     return [tokenizer.decode(output, skip_special_tokens=True) for output in outputs]
 
-# Gradio UI
 demo = gr.Interface(
     fn=generate_names, 
     inputs=[
